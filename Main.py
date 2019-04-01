@@ -10,6 +10,7 @@ Constants.py, Main.py, Maze_Struct.txt, pictures, README.md"""
 
 import pygame
 import Constants
+import Maze
 
 pygame.init()
 
@@ -60,3 +61,23 @@ while first_loop:
 
     if go != 0:
         background == pygame.image.load(Constants.BACKGROUND).convert()
+        game = Maze.Labyrinth(go)
+        game.load_from_file()
+        game.print_maze(window)
+
+    # Game loop
+    while game_loop:
+
+        pygame.time.Clock().tick(30)
+
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+                game_loop = 0
+                home_loop = 0
+
+            elif event.type == pygame.KEYDOWN:
+
+                if event.key == pygame.K_ESCAPE:
+                    first_loop = 0
+                    
