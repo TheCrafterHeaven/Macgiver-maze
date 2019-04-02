@@ -58,7 +58,7 @@ while first_loop:
                 # playing game loop
                 if event.key == pygame.K_F1:
                     home_loop = 0
-                    go = "Maze.Struct.txt"
+                    go = "Maze_Struct.txt"
 
     if go != 0:
         # loading the background
@@ -70,8 +70,6 @@ while first_loop:
 
         # Loading Macgiver
         mg = Macgiver.Hero(env)
-
-
 
     # Game loop
     while game_loop:
@@ -100,3 +98,8 @@ while first_loop:
 
             # refresh window
             window.blit(background, (0, 0))
+            # print the window
+            env.print_maze(window)
+            # print the hero
+            window.blit(mg.picture, (mg.x, mg.y))
+            pygame.display.flip()

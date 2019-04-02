@@ -5,7 +5,7 @@ SPRITE_SIZE = 40  # Dimension in pixels of the sprite size.
 WINDOW_DIM = SPRITE_SIZE * SPRITE_NUM  # Dimension in pixels of the Maze.
 
 # Picture of the maze Background
-BACKGROUND = "pictures/background..jpg.png"
+BACKGROUND = "pictures/background.png"
 
 # Home window
 HOME_PICTURE = "pictures/Home.PNG"
