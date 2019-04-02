@@ -11,6 +11,7 @@ Constants.py, Main.py, Maze_Struct.txt, pictures, README.md"""
 import pygame
 import Constants
 import Maze
+import Macgiver
 
 pygame.init()
 
@@ -60,10 +61,17 @@ while first_loop:
                     go = "Maze.Struct.txt"
 
     if go != 0:
-        background == pygame.image.load(Constants.BACKGROUND).convert()
-        game = Maze.Labyrinth(go)
-        game.load_from_file()
-        game.print_maze(window)
+        # loading the background
+        background = pygame.image.load(Constants.BACKGROUND).convert()
+        # Loading the maze
+        env = Maze.Labyrinth(go)
+        env.load_from_file()
+        env.print_maze(window)
+
+        # Loading Macgiver
+        mg = Macgiver.Hero(env)
+
+
 
     # Game loop
     while game_loop:
@@ -80,4 +88,15 @@ while first_loop:
 
                 if event.key == pygame.K_ESCAPE:
                     first_loop = 0
-                    
+                # Command to move Macgiver
+                elif event.key == pygame.K_RIGHT:
+                    mg.move('right')
+                elif event.key == pygame.K_LEFT:
+                    mg.move('left')
+                elif event.key == pygame.K_UP:
+                    mg.move('up')
+                elif event.key == pygame.K_DOWN:
+                    mg.move('down')
+
+            # refresh window
+            window.blit(background, (0, 0))

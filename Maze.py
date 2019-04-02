@@ -46,10 +46,10 @@ class Labyrinth:
         # We go through the level list
         line_number = 0
         for line in self.structure:
-            # On parcourt les listes de lignes
+            # We go through list of lines
             sprite_number = 0
             for sprite in line:
-                # On calcule la position réelle en pixels
+                # We calculate the position in pixels
                 x = sprite_number * Constants.SPRITE_SIZE
                 y = line_number * Constants.SPRITE_SIZE
                 if sprite == 'X':  # X = wall
