@@ -4,12 +4,14 @@ import pygame
 import Constants
 import random
 
+
 class Labyrinth:
     """class permit to create the maze"""
 
     def __init__(self, file):
         self.file = file
         self.structure = []
+        self.score = 0
 
     def load_from_file(self):
         """Method for generating the level according to the file.
@@ -33,6 +35,7 @@ class Labyrinth:
             self.structure = maze_matrice
 
     def is_valid_position(self, x, y):
+        """Method to check the position of the item"""
         if self.structure[x][y] == '0':
             return True
 
