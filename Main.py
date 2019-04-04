@@ -12,6 +12,7 @@ import pygame
 import Constants
 import Maze
 import Macgiver
+from Macgiver import Hero
 
 pygame.init()
 
@@ -66,6 +67,7 @@ while first_loop:
         # Loading the maze
         env = Maze.Labyrinth(go)
         env.load_from_file()
+        env.items()
         env.print_maze(window)
 
         # Loading Macgiver

@@ -2,14 +2,14 @@
 
 import pygame
 import Constants
-
+import random
 
 class Labyrinth:
     """class permit to create the maze"""
 
     def __init__(self, file):
         self.file = file
-        self.structure = 0
+        self.structure = []
 
     def load_from_file(self):
         """Method for generating the level according to the file.
@@ -32,6 +32,24 @@ class Labyrinth:
             # We take this structure in a list of list
             self.structure = maze_matrice
 
+    def is_valid_position(self, x, y):
+        if self.structure[x][y] == '0':
+            return True
+
+    def items(self):
+        item_list = ['E', 'T', 'N']
+        for item in item_list:
+
+                # Find random coordinate in matrix
+                x = random.randrange(Constants.SPRITE_NUM)
+                y = random.randrange(Constants.SPRITE_NUM)
+
+                while self.is_valid_position(x, y) == '0':
+                    x = random.randrange(Constants.SPRITE_NUM)
+                    y = random.randrange(Constants.SPRITE_NUM)
+
+                self.structure[x][y] = item
+
     def print_maze(self, window):
         """Method for displaying the level according to
         the structure returned by load_from_file()"""
@@ -49,7 +67,7 @@ class Labyrinth:
             # We go through list of lines
             sprite_number = 0
             for sprite in line:
-                # We calculate the position in pixels
+                # We calculate the position in pixels and print the maze and objects
                 x = sprite_number * Constants.SPRITE_SIZE
                 y = line_number * Constants.SPRITE_SIZE
                 if sprite == 'X':  # X = wall
