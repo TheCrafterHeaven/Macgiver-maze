@@ -60,6 +60,6 @@ class Hero:
 
         # permit to take items and count them
         take_item = self.env.structure[self.sprite_x][self.sprite_y]
-        if take_item == 'E' or 'T' or 'N':
+        if take_item == 'E' or take_item == 'T' or take_item == 'N':
             self.env.score += 1
             self.env.structure[self.sprite_y][self.sprite_x] = '0'
