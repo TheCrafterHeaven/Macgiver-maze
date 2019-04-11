@@ -1,6 +1,5 @@
 import pygame
 import Constants
-import Maze
 
 class Hero:
     """Class permit to create the hero"""
@@ -58,7 +57,7 @@ class Hero:
             self.direction = self.picture
 
         # permit to take items and count them
-        take_item = self.env.structure[self.sprite_x][self.sprite_y]
+        take_item = self.env.structure[self.sprite_y][self.sprite_x]
         if take_item == 'E' or take_item == 'T' or take_item == 'N':
             env.score += 1
-            env(Maze.Labyrinth.remove_item)(self.sprite_y, self.sprite_x)
+            self.env.structure[self.sprite_y][self.sprite_x] = '0'

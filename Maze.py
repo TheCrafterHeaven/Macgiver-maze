@@ -35,7 +35,7 @@ class Labyrinth:
             self.structure = maze_matrice
 
     def random_position(self):
-        return random.randint(1, Constants.SPRITE_NUM - 1)
+        return random.randrange(1, Constants.SPRITE_NUM - 1)
 
     def is_valid_position(self, x, y):
         if (self.structure[x][y]) == '0':
@@ -55,9 +55,6 @@ class Labyrinth:
                 y = self.random_position()
 
             self.structure[x][y] = item
-
-    def remove_item(self, x, y):
-        self.structure[x][y] = '0'
 
     def print_maze(self, window):
         """Method for displaying the level according to
