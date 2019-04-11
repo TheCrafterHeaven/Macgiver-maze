@@ -61,6 +61,7 @@ while first_loop:
                     go = "Maze_Struct.txt"
 
     if go != 0:
+
         # loading the background
         background = pygame.image.load(Constants.BACKGROUND).convert()
         # Loading the maze
@@ -104,3 +105,10 @@ while first_loop:
             # print the hero
             window.blit(mg.picture, (mg.x, mg.y))
             pygame.display.flip()
+
+            if env.structure[mg.sprite_y][mg.sprite_x] == 'F' and env.score == 3:
+                win = pygame.image.load(Constants.WIN_PICTURE).convert()
+                window.blit(win, (0, 0))
+            else :
+                lose = pygame.image.load(Constants.LOSE_PICTURE).convert()
+                window.blit(lose, (0, 0))
