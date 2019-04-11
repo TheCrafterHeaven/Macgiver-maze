@@ -2,7 +2,6 @@ import pygame
 import Constants
 import Maze
 
-
 class Hero:
     """Class permit to create the hero"""
 
@@ -18,7 +17,7 @@ class Hero:
         self.env = env
         self.score = 0
 
-    def move(self, direction):
+    def move(self, env  , direction):
         """Method permit to move the hero"""
 
         # Moving right
@@ -61,5 +60,5 @@ class Hero:
         # permit to take items and count them
         take_item = self.env.structure[self.sprite_x][self.sprite_y]
         if take_item == 'E' or take_item == 'T' or take_item == 'N':
-            self.env.score += 1
-            self.env.structure[self.sprite_y][self.sprite_x] = '0'
+            env.score += 1
+            env(Maze.Labyrinth.remove_item)(self.sprite_y, self.sprite_x)

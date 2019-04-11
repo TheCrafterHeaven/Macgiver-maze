@@ -90,13 +90,13 @@ while first_loop:
                     first_loop = 0
                 # Command to move Macgiver
                 elif event.key == pygame.K_RIGHT:
-                    mg.move('right')
+                    mg.move(env, 'right')
                 elif event.key == pygame.K_LEFT:
-                    mg.move('left')
+                    mg.move(env, 'left')
                 elif event.key == pygame.K_UP:
-                    mg.move('up')
+                    mg.move(env, 'up')
                 elif event.key == pygame.K_DOWN:
-                    mg.move('down')
+                    mg.move(env, 'down')
 
             # refresh window
             window.blit(background, (0, 0))

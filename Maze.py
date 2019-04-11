@@ -34,24 +34,30 @@ class Labyrinth:
             # We take this structure in a list of list
             self.structure = maze_matrice
 
+    def random_position(self):
+        return random.randint(1, Constants.SPRITE_NUM - 1)
+
     def is_valid_position(self, x, y):
-        """Method to check the position of the item"""
-        if self.structure[x][y] == '0':
+        if (self.structure[x][y]) == '0':
             return True
+        else:
+            return False
 
     def items(self):
-        item_list = ['E', 'T', 'N']
-        for item in item_list:
+        structure_items = ['E', 'T', 'N']
 
-                # Find random coordinate in matrix
-                x = random.randrange(Constants.SPRITE_NUM)
-                y = random.randrange(Constants.SPRITE_NUM)
+        for item in structure_items:
+            x = self.random_position()
+            y = self.random_position()
 
-                while self.is_valid_position(x, y) == '0':
-                    x = random.randrange(Constants.SPRITE_NUM)
-                    y = random.randrange(Constants.SPRITE_NUM)
+            while (self.is_valid_position(x, y) == False):
+                x = self.random_position()
+                y = self.random_position()
 
-                self.structure[x][y] = item
+            self.structure[x][y] = item
+
+    def remove_item(self, x, y):
+        self.structure[x][y] = '0'
 
     def print_maze(self, window):
         """Method for displaying the level according to
