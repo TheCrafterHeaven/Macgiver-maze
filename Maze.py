@@ -67,6 +67,11 @@ class Labyrinth:
         tube = pygame.image.load(Constants.TUBE_PICTURE).convert()
         needle = pygame.image.load(Constants.NEEDLE_PICTURE).convert()
 
+        # to print the number of items pick up
+        score_text = 'you have ' + str(self.score) + ' item(s) in your pocket'
+        score_font = pygame.font.SysFont("monospace", 30)
+        print_score = score_font.render(score_text, 10, (255, 255, 255))
+
         # We go through the level list
         line_number = 0
         for line in self.structure:
@@ -88,4 +93,6 @@ class Labyrinth:
                     window.blit(needle, (x, y))
                 sprite_number += 1
             line_number += 1
+
+        window.blit(print_score, (5, 620))
 

@@ -12,12 +12,11 @@ import pygame
 import Constants
 import Maze
 import Macgiver
-from Macgiver import Hero
 
 pygame.init()
 
 # Opening pygame window with sizes (width, height)
-window = pygame.display.set_mode((Constants.WINDOW_DIM, Constants.WINDOW_DIM))
+window = pygame.display.set_mode((Constants.WINDOW_DIM, 75 + Constants.WINDOW_DIM))
 
 icon = pygame.image.load(Constants.MACGIVER_PICTURE)
 pygame.display.set_icon(icon)

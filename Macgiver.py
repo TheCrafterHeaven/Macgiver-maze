@@ -16,7 +16,7 @@ class Hero:
         self.env = env
         self.score = 0
 
-    def move(self, env  , direction):
+    def move(self, env, direction):
         """Method permit to move the hero"""
 
         # Moving right
