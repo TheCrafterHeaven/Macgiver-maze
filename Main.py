@@ -84,7 +84,7 @@ while first_loop:
                 game_loop = 0
                 home_loop = 0
 
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
 
                 if event.key == pygame.K_ESCAPE:
                     first_loop = 0
@@ -107,8 +107,43 @@ while first_loop:
             pygame.display.flip()
 
             if env.structure[mg.sprite_y][mg.sprite_x] == 'F' and env.score == 3:
-                win = pygame.image.load(Constants.WIN_PICTURE).convert()
-                window.blit(win, (0, 0))
-            else :
-                lose = pygame.image.load(Constants.LOSE_PICTURE).convert()
-                window.blit(lose, (0, 0))
+                win_screen = 1
+                while win_screen:
+                    game_loop = 0
+                    win = pygame.image.load(Constants.WIN_PICTURE).convert()
+                    window.blit(win, (0, 0))
+                    # Refreshments
+                    pygame.display.flip()
+
+                    for event in pygame.event.get():
+                        if event.type == pygame.KEYDOWN:
+                            # If the user press Esc here, we just go back to the menu
+                            if event.key == pygame.K_ESCAPE:
+                                win_screen = 0
+                                home_loop = 1
+                            if event.key == pygame.QUIT:
+                                win_screen = 0
+                                first_loop = 0
+                                home_loop = 0
+
+            elif env.structure[mg.sprite_y][mg.sprite_x] == 'F' and env.score < 3:
+
+                lose_screen = 1
+                while lose_screen:
+                    game_loop = 0
+                    win = pygame.image.load(Constants.LOSE_PICTURE).convert()
+                    window.blit(win, (0, 0))
+                    # Refreshments
+                    pygame.display.flip()
+
+                    for event in pygame.event.get():
+                        if event.type == pygame.KEYDOWN:
+                            # If the user press Esc here, we just go back to the menu
+                            if event.key == pygame.K_ESCAPE:
+                                lose_screen = 0
+                                first_loop = 1
+                                home_loop = 1
+                            if event.key == pygame.QUIT:
+                                lose_screen = 0
+                                home_loop = 0
+                                first_loop = 0
