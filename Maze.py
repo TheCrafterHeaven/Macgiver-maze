@@ -35,22 +35,25 @@ class Labyrinth:
             self.structure = maze_matrice
 
     def random_position(self):
-        return random.randrange(1, Constants.SPRITE_NUM - 1)
+        """Method permit to return a random coordinate"""
+        return random.randrange(0, Constants.SPRITE_NUM)
 
     def is_valid_position(self, x, y):
+        """Method permit to know if a position is a path (True) or a wall (False)"""
         if (self.structure[x][y]) == '0':
             return True
         else:
             return False
 
     def items(self):
+        """Method permit give to items random coordinates"""
         structure_items = ['E', 'T', 'N']
 
         for item in structure_items:
             x = self.random_position()
             y = self.random_position()
 
-            while (self.is_valid_position(x, y) == False):
+            while self.is_valid_position(x, y) == False:
                 x = self.random_position()
                 y = self.random_position()
 
@@ -66,12 +69,6 @@ class Labyrinth:
         ether = pygame.image.load(Constants.ETHER_PICTURE).convert()
         tube = pygame.image.load(Constants.TUBE_PICTURE).convert()
         needle = pygame.image.load(Constants.NEEDLE_PICTURE).convert()
-
-        # to print the number of items pick up
-        if self.score <= 3:
-            score_text = 'you have ' + str(self.score) + ' item(s) in your pocket'
-            score_font = pygame.font.SysFont("monospace", 30)
-            print_score = score_font.render(score_text, 10, (255, 255, 255))
 
         # We go through the level list
         line_number = 0
@@ -94,7 +91,3 @@ class Labyrinth:
                     window.blit(needle, (x, y))
                 sprite_number += 1
             line_number += 1
-
-        window.blit(print_score, (5, 620))
-        pygame.display.flip()
-

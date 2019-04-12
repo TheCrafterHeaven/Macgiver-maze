@@ -29,7 +29,9 @@ first_loop = 1
 while first_loop:
     # loading the home screen
     home = pygame.image.load(Constants.HOME_PICTURE).convert()
+    score_background = pygame.image.load(Constants.SCORE_BACKGROUND).convert()
     window.blit(home, (0, 0))
+    window.blit(score_background, (0, Constants.WINDOW_DIM))
 
     # Refresh
     pygame.display.flip()
@@ -61,9 +63,9 @@ while first_loop:
                     go = "Maze_Struct.txt"
 
     if go != 0:
-
         # loading the background
         background = pygame.image.load(Constants.BACKGROUND).convert()
+
         # Loading the maze
         env = Maze.Labyrinth(go)
         env.load_from_file()
@@ -77,6 +79,9 @@ while first_loop:
     while game_loop:
 
         pygame.time.Clock().tick(30)
+        # refresh window
+        window.blit(background, (0, 0))
+        window.blit(score_background, (0, Constants.WINDOW_DIM))
 
         for event in pygame.event.get():
 
@@ -98,8 +103,12 @@ while first_loop:
                 elif event.key == pygame.K_DOWN:
                     mg.move(env, 'down')
 
-            # refresh window
-            window.blit(background, (0, 0))
+            # to print the number of items pick up
+            score_font = pygame.font.SysFont("monospace", 28, bold=True)
+            print_score = score_font.render\
+                ("You have " + str(env.score) + " item(s) in your pocket", 1, (255, 255, 255))
+            window.blit(print_score, (20, 620))
+
             # print the window
             env.print_maze(window)
             # print the hero
@@ -115,13 +124,13 @@ while first_loop:
                     # Refreshments
                     pygame.display.flip()
 
-                    for event in pygame.event.get():
-                        if event.type == pygame.KEYDOWN:
+                    for evt in pygame.event.get():
+                        if evt.type == pygame.KEYDOWN:
                             # If the user press Esc here, we just go back to the menu
-                            if event.key == pygame.K_ESCAPE:
+                            if evt.key == pygame.K_ESCAPE:
                                 win_screen = 0
                                 home_loop = 1
-                            if event.key == pygame.QUIT:
+                            if evt.key == pygame.QUIT:
                                 win_screen = 0
                                 first_loop = 0
                                 home_loop = 0
@@ -136,14 +145,14 @@ while first_loop:
                     # Refreshments
                     pygame.display.flip()
 
-                    for event in pygame.event.get():
-                        if event.type == pygame.KEYDOWN:
+                    for elt in pygame.event.get():
+                        if elt.type == pygame.KEYDOWN:
                             # If the user press Esc here, we just go back to the menu
-                            if event.key == pygame.K_ESCAPE:
+                            if elt.key == pygame.K_ESCAPE:
                                 lose_screen = 0
                                 first_loop = 1
                                 home_loop = 1
-                            if event.key == pygame.QUIT:
+                            if elt.key == pygame.QUIT:
                                 lose_screen = 0
                                 home_loop = 0
                                 first_loop = 0

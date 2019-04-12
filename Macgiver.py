@@ -1,5 +1,7 @@
+"""This class permit to create and move the hero"""
 import pygame
 import Constants
+
 
 class Hero:
     """Class permit to create the hero"""
@@ -14,18 +16,17 @@ class Hero:
         self.y = 0
         # Environment of the hero
         self.env = env
-        self.score = 0
 
     def move(self, env, direction):
         """Method permit to move the hero"""
 
         # Moving right
         if direction == 'right':
-            # Don't go ouf of the screen
+            # Don't go out of the screen
             if self.sprite_x < (Constants.SPRITE_NUM - 1):
                 # Check if the position is valid
                 if self.env.structure[self.sprite_y][self.sprite_x + 1] != 'X':
-                    # moving one sprite
+                    # moving one sprite right
                     self.sprite_x += 1
                     # Calculate position in pixels
                     self.x = self.sprite_x * Constants.SPRITE_SIZE
@@ -59,5 +60,5 @@ class Hero:
         # permit to take items and count them
         take_item = self.env.structure[self.sprite_y][self.sprite_x]
         if take_item == 'E' or take_item == 'T' or take_item == 'N':
-            env.score += 1
+            env.score = env.score + 1
             self.env.structure[self.sprite_y][self.sprite_x] = '0'
