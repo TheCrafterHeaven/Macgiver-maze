@@ -10,4 +10,4 @@ Au détours du labyrinthe vous trouverez des objets, ramassez-les afin d'endormi
 Attention, lorsque vous recommencerez une partie, les objets se placeront différement et vous recommencerez à ZERO.
 
 # Requierements : Python 3.6/ pygame 1.94/ 
-Pour pouvoir jouer sur votre ordinateur (OSX, Windows ou Linux) vous devez télécharger python 3.X. Puis télécharger Pygame 1.94. Pour finir clonez le repository sor votre ordinateur et enfin vous pourrez lancer le jeu en tapant : python3 main.py     dans votre invit' de commande en vous placent dans le dossier cloné.
+Pour pouvoir jouer sur votre ordinateur (OSX, Windows ou Linux) vous devez télécharger python 3.X. Puis télécharger Pygame 1.94. Pour finir clonez le repository sor votre ordinateur et enfin vous pourrez lancer le jeu en tapant : python3 Main.py     dans votre invit' de commande en vous placent dans le dossier cloné.
