@@ -1,3 +1,4 @@
+"""This module is regrouping all the constants important for the program"""
 # window parameters
 WINDOW_TITLE = 'Macgiver Maze'
 SPRITE_NUM = 15  # Number of sprites per side of the Maze.

@@ -1,8 +1,8 @@
 """Class Maze of the game Macgiver Maze"""
 
+import random
 import pygame
 import Constants
-import random
 
 
 class Labyrinth:

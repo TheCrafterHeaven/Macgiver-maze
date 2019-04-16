@@ -48,7 +48,8 @@ while first_loop:
 
             # if the user exit the game, we put variables to 0
             # that close the window
-            if event.type == pygame.QUIT or event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            if event.type == pygame.QUIT or event.type == pygame.KEYDOWN\
+                    and event.key == pygame.K_ESCAPE:
 
                 first_loop = 0
                 game_loop = 0
